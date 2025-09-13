@@ -1,0 +1,230 @@
+Windows PowerShell
+Copyright (C) Microsoft Corporation. Todos los derechos reservados.
+
+Instale la versión más reciente de PowerShell para obtener nuevas características y mejoras. https://aka.ms/PSWindows
+
+PS C:\Users\invit> jshell
+|  Welcome to JShell -- Version 24.0.1
+|  For an introduction type: /help intro
+
+
+jshell> err1(){
+   ...>     return "¿Dónde está el error?";
+   ...> }
+|  Error:
+|  ';' expected
+|  err1(){
+|        ^
+|  Error:
+|  cannot find symbol
+|    symbol:   method err1()
+|  err1(){
+|  ^--^
+
+jshell> String err1(){
+   ...>     return "¿Dónde está el error?";
+   ...> }
+|  created method err1()
+
+jshell> string err2(){
+   ...>     return "¿String o string?;
+|  Error:
+|  unclosed string literal
+|      return "¿String o string?;
+|             ^
+|  Error:
+|  reached end of file while parsing
+|      return "¿String o string?;
+|                                ^
+
+jshell> string err2(){
+   ...>     return "¿String o string?;}
+|  Error:
+|  unclosed string literal
+|      return "¿String o string?;}
+|             ^
+|  Error:
+|  reached end of file while parsing
+|      return "¿String o string?;}
+|                                 ^
+
+jshell> String err2(){
+   ...>     return "¿String o string?;}
+|  Error:
+|  unclosed string literal
+|      return "¿String o string?;}
+|             ^
+|  Error:
+|  reached end of file while parsing
+|      return "¿String o string?;}
+|                                 ^
+
+jshell> String err2(){
+   ...>     return "¿String o string?";}
+|  created method err2()
+
+jshell> String err3(who){
+   ...>     return String.format("%s, cuál es el error?", who);
+   ...> }
+|  Error:
+|  <identifier> expected
+|  String err3(who){
+|                 ^
+
+jshell> String err3(String who){
+   ...>     return String.format("%s, cuál es el error?", who);
+   ...> }
+|  created method err3(String)
+
+jshell> String err4(){
+   ...>     return "Este es un error sutil"
+   ...> }
+|  Error:
+|  ';' expected
+|      return "Este es un error sutil"
+|                                     ^
+
+jshell> String err4(){
+   ...>     return "Este es un error sutil";
+   ...> }
+|  created method err4()
+
+jshell> String err6 {
+   ...>     return "Hola error";
+   ...> }
+|  Error:
+|  ';' expected
+|  String err6 {
+|             ^
+
+jshell> String err6() {
+   ...>     return "Hola error";
+   ...> }
+|  created method err6()
+
+jshell> String err7(String quien) {
+   ...>     return format("%s ¿Un  poco mañoso, no?, quien);
+|  Error:
+|  unclosed string literal
+|      return format("%s ¿Un  poco mañoso, no?, quien);
+|                    ^
+|  Error:
+|  reached end of file while parsing
+|      return format("%s ¿Un  poco mañoso, no?, quien);
+|                                                      ^
+
+jshell> String err7(String quien) {
+   ...>     return format("%s ¿Un  poco mañoso, no?", quien);
+   ...> }
+|  created method err7(String), however, it cannot be invoked until method format(java.lang.String,java.lang.String) is declared
+
+jshell> String err7(String quien) {
+   ...>     return String.format("%s ¿Un  poco mañoso, no?", quien);
+   ...> }
+|  modified method err7(String)
+
+jshell> String adivinaLaPelicula(String emoji1, String emoji2, String emoji3) {
+   ...>     return String.format("[%s, %s, %s]", emoji1, emoji2, emoji3);
+   ...> }
+|  created method adivinaLaPelicula(String,String,String)
+
+jshell> adivinaLaPelicula(feliz, triste, enojado)
+|  Error:
+|  cannot find symbol
+|    symbol:   variable feliz
+|  adivinaLaPelicula(feliz, triste, enojado)
+|                    ^---^
+|  Error:
+|  cannot find symbol
+|    symbol:   variable triste
+|  adivinaLaPelicula(feliz, triste, enojado)
+|                           ^----^
+|  Error:
+|  cannot find symbol
+|    symbol:   variable enojado
+|  adivinaLaPelicula(feliz, triste, enojado)
+|                                   ^-----^
+
+jshell> adivinaLaPelicula("feliz", "triste", "enojado")
+$9 ==> "[feliz, triste, enojado]"
+
+jshell> String konnichiwa(String dare){
+   ...>     return String.format("こんにちは%s", dare);
+   ...> }
+|  created method konnichiwa(String)
+
+jshell> konnichiwa("hola");
+$11 ==> "?????hola"
+
+jshell> String separador(){
+   ...>     return "<<<>>>";
+   ...> }
+|  created method separador()
+
+jshell> separador()
+$13 ==> "<<<>>>"
+
+jshell> String vocales(){
+   ...>     return "aeiou";
+   ...> }
+|  created method vocales()
+
+jshell> vocales()
+$15 ==> "aeiou"
+
+jshell> String tituloAdornado(String textoParaAdornar) {
+   ...>     return String.format("<<< %s >>>";
+   ...> }
+|  Error:
+|  ')' or ',' expected
+|      return String.format("<<< %s >>>";
+|                                       ^
+
+jshell> String tituloAdornado(String textoParaAdornar) {
+   ...>     return String.format("<<< %s >>>", textoParaAdornar);
+   ...> }
+|  created method tituloAdornado(String)
+
+jshell> tituloAdornado("Java)
+|  Error:
+|  unclosed string literal
+|  tituloAdornado("Java)
+|                 ^
+
+jshell> tituloAdornado("Java")
+$17 ==> "<<< Java >>>"
+
+jshell> tituloAdornado(">>> <<<")
+$18 ==> "<<< >>> <<< >>>"
+
+jshell> tituloAdornado("A + B")
+$19 ==> "<<< A + B >>>"
+
+jshell> String adornar(String textoParaAdornar) {
+   ...>     return String.format("<= %s =>", textoParaAdornar);
+   ...> }
+|  created method adornar(String)
+
+jshell> adornar("Java")
+$21 ==> "<= Java =>"
+
+jshell> adornar("Mundo")
+$22 ==> "<= Mundo =>"
+
+jshell> String concatenar(String s1, String s2) {
+   ...>     return String.format("[%s+%s", s2, s1);
+   ...> }
+|  created method concatenar(String,String)
+
+jshell> concatenar("A", "Z")
+$24 ==> "[Z+A"
+
+jshell> String concatenar(String s1, String s2) {
+   ...>     return String.format("[%s+%s]", s1, s2);
+   ...> }
+|  modified method concatenar(String,String)
+
+jshell> concatenar("A", "Z")
+$26 ==> "[A+Z]"
+
+jshell> /save erik_valencia_funciones.jsh
