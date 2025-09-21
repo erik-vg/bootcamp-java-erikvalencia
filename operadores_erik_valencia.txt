@@ -1,3 +1,12 @@
+int multiplicación(int número1, int número2) {
+    return número1 * número2;
+}
+int suma(int número1, int número2) {
+    return número1 + número2;
+}
+boolean positivoMenorDe20(int número) {
+    return número > 0 && número < 20;
+}
 int truncado(int n) {
     return n / 10;
 }
