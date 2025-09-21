@@ -7,6 +7,57 @@ PS C:\Users\invit> jshell
 |  Welcome to JShell -- Version 24.0.1
 |  For an introduction type: /help intro
 
+jshell> // E2.1
+
+jshell> int multiplicación(String número1, String número2) {
+   ...>     return número1 * número2;
+   ...> }
+|  Error:
+|  bad operand types for binary operator '*'
+|    first type:  java.lang.String
+|    second type: java.lang.String
+|      return número1 * número2;
+|             ^---------------^
+
+jshell> int multiplicación(int número1, int número2) {
+   ...>     return número1 * número2;
+   ...> }
+|  created method multiplicación(int,int)
+
+jshell> //E2.2
+
+jshell> int suma(int número1, int número2) {
+   ...>     return + número1 número2;
+   ...> }
+|  Error:
+|  ';' expected
+|      return + número1 número2;
+|                      ^
+|  Error:
+|  not a statement
+|      return + número1 número2;
+|                       ^-----^
+
+jshell> int suma(int número1, int número2) {
+   ...>     return número1 + número2;
+   ...> }
+|  created method suma(int,int)
+
+jshell> //E2.3
+
+jshell> boolean positivoMenorDe20(int número) {
+   ...>     return número > 0 && < 20;
+   ...> }
+|  Error:
+|  illegal start of type
+|      return número > 0 && < 20;
+|                             ^
+
+jshell> boolean positivoMenorDe20(int número) {
+   ...>     return número > 0 && número < 20;
+   ...> }
+|  created method positivoMenorDe20(int)
+
 jshell> // E2.4 Llena el hueco de la función truncar, de modo que dado un número entero, retorne el mismo número pero sin su último dígito.
 
 jshell> int truncado(int n) {
