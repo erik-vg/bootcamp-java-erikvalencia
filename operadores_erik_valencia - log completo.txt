@@ -1,0 +1,305 @@
+Windows PowerShell
+Copyright (C) Microsoft Corporation. Todos los derechos reservados.
+
+Instale la versión más reciente de PowerShell para obtener nuevas características y mejoras. https://aka.ms/PSWindows
+
+PS C:\Users\invit> jshell
+|  Welcome to JShell -- Version 24.0.1
+|  For an introduction type: /help intro
+
+jshell> // E2.4 Llena el hueco de la función truncar, de modo que dado un número entero, retorne el mismo número pero sin su último dígito.
+
+jshell> int truncado(int n) {
+   ...>     return n / 10;
+   ...> }
+|  created method truncado(int)
+
+jshell> truncado(123)
+$2 ==> 12
+
+jshell> truncado(456)
+$3 ==> 45
+
+jshell> truncado(9)
+$4 ==> 0
+
+jshell> truncado(0)
+$5 ==> 0
+
+jshell> // E2.5 Llena el hueco de la función últimoDígito, de modo que dado un número entero, retorne el último dígito de este.
+
+jshell> int ultimoDigito(int n) {
+   ...>     return n % 10;
+   ...> }
+|  created method ultimoDigito(int)
+
+jshell> ultimoDigito(123)
+$7 ==> 3
+
+jshell> ultimoDigito(456)
+$8 ==> 6
+
+jshell> ultimoDigito(9)
+$9 ==> 9
+
+jshell> ultimoDigito(0)
+$10 ==> 0
+
+jshell> // E2.6 Llena los huecos, para crear una función que dado un número entero, devuelve verdadero si el número está dentro del rango de 0 a 9 y falso de lo contrario.
+
+jshell> boolean unicoDigito(int n) {
+   ...>     return (n>0) & (n<10);
+   ...> }
+|  created method unicoDigito(int)
+
+jshell> unicoDigito(0)
+$12 ==> false
+
+jshell> boolean unicoDigito(int n) {
+   ...>     return (n>0) && (n<10);
+   ...> }
+|  modified method unicoDigito(int)
+
+jshell> unicoDigito(0)
+$14 ==> false
+
+jshell> boolean unicoDigito(int n) {
+   ...>     return (n>=0) && (n<=10);
+   ...> }
+|  modified method unicoDigito(int)
+
+jshell> unicoDigito(0)
+$16 ==> true
+
+jshell> unicoDigito(1)
+$17 ==> true
+
+jshell> unicoDigito(5)
+$18 ==> true
+
+jshell> unicoDigito(9)
+$19 ==> true
+
+jshell> unicoDigito(10)
+$20 ==> true
+
+jshell> boolean unicoDigito(int n) {
+   ...>     return (n>=0) && (n<10);
+   ...> }
+|  modified method unicoDigito(int)
+
+jshell> unicoDigito(10)
+$22 ==> false
+
+jshell> unicoDigito(88)
+$23 ==> false
+
+jshell> // E2.7 Llena los huecos, para crear una función que dado un número entero, devuelva el String "no-negativo" si es positivo o cero, o "negativo" si es negativo.
+
+jshell> String signo(int n) {
+   ...>     return (n >= 0) ? "no-negativo" : "negativo";
+   ...> }
+|  created method signo(int)
+
+jshell> signo(-1)
+$25 ==> "negativo"
+
+jshell> signo(10)
+$26 ==> "no-negativo"
+
+jshell> signo(0)
+$27 ==> "no-negativo"
+
+jshell> signo(-20)
+$28 ==> "negativo"
+
+jshell> //E2.8 Escribe una función esPar() que verifique si un número es par. Un número es par si es múltiplo de 2.
+
+jshell> String esPar(int n) {
+   ...>     return (n%2 == 0) ? "es par" : "es impar";
+   ...> }
+|  created method esPar(int)
+
+jshell> esPar(2)
+$30 ==> "es par"
+
+jshell> esPar(5)
+$31 ==> "es impar"
+
+jshell> // E2.9 Escribe una función esImpar() que verifique si un número es impar. Un número es impar si no es par.
+
+jshell> String esImpar(int n) {
+   ...>     return (n%2 != 0) ? "es impar" : "es par";
+   ...> }
+|  created method esImpar(int)
+
+jshell> es
+esImpar(   esPar(
+jshell> es
+esImpar(   esPar(
+jshell> esImpar(3)
+$33 ==> "es impar"
+
+jshell> esImpar(5)
+$34 ==> "es impar"
+
+jshell> esImpar(2)
+$35 ==> "es par"
+
+jshell> esImpar(4)
+$36 ==> "es par"
+
+jshell> //E2.10 Escriba una función, diferenciaDeCuadrados() que tome dos números enteros y devuelva el resultado de a2 - b2.
+
+jshell> int diferenciaDeCuadrados(int a, int b) {
+   ...>     return (a*a) - (b*b);
+   ...> }
+|  created method diferenciaDeCuadrados(int,int)
+
+jshell> diferenciaDeCuadrados(3, 2)
+$38 ==> 5
+
+jshell> diferenciaDeCuadrados(1, 1)
+$39 ==> 0
+
+jshell> //E2.11 Escribe una función, tercerÁngulo() que tome dos doubles que representan la medida de dos ángulos de un triángulo y devuelva la medida del tercero. Los 3 ángulos de un triángulo suman 180.0, por lo que si restas la suma de dos ángulos a 180.0 deberías obtener el tercer ángulo.
+
+jshell> double tercerÁngulo(double angulo1, angulo2) {
+   ...>     return 180.0 - (angulo1 + angulo2);
+   ...> }
+|  Error:
+|  <identifier> expected
+|  double tercer?ngulo(double angulo1, angulo2) {
+|                                             ^
+
+jshell> double tercerAngulo(double angulo1, angulo2) {
+   ...>     return 180.0 - (angulo1 + angulo2);
+   ...> }
+|  Error:
+|  <identifier> expected
+|  double tercerAngulo(double angulo1, angulo2) {
+|                                             ^
+
+jshell> double tercerAngulo(double angulo1, double angulo2) {
+   ...>     return 180.0 - (angulo1 + angulo2);
+   ...> }
+|  created method tercerAngulo(double,double)
+
+jshell> tercerAngulo(60.0, 60.0)
+$41 ==> 60.0
+
+jshell> tercerAngulo(45.0, 90.0)
+$42 ==> 45.0
+
+jshell> tercerAngulo(35.0, 50.0)
+$43 ==> 95.0
+
+jshell> //E2.12 Escribe una función que tome un número entero y devuelva un predicado que sea verdadero si es un múltiplo positivo de siete menor que 1000.
+
+
+jshell> boolean validarMúltiploDe7(int n){
+   ...>     return (n%7 == 0 && n>=0 && n<1000);}
+|  created method validarMúltiploDe7(int)
+
+jshell> validarMúltiploDe7(-7)
+$45 ==> false
+
+jshell> boolean validarMúltiploDe7(int n){
+   ...>     return (n%7 == 0 && n>0 && n<1000);}
+|  modified method validarMúltiploDe7(int)
+
+jshell> validarMúltiploDe7(0)
+$47 ==> false
+
+jshell> validarMúltiploDe7(91)
+$48 ==> true
+
+jshell> validarMúltiploDe7(9100)
+$49 ==> false
+
+jshell> //E2.13 Escribe una función validar() que tome tres números enteros: inicio, mitad y tamaño y retorne verdadero si <inicio> es mayor o igual a 0, <inicio> es menor que <mitad> y <mitad> es menor que tamaño.
+
+jshell> boolean validar(int inicio, int mitad, int tamanio) {
+   ...>     return (inicio >= 0) && (inicio < mitad) && (mitad < tamanio);
+   ...> }
+|  created method validar(int,int,int)
+
+jshell> validar(0, 1, 2)
+$51 ==> true
+
+jshell> validar(1, 1, 2)
+$52 ==> false
+
+jshell> validar(2, 1, 3)
+$53 ==> false
+
+jshell> validar(0, 3, 3)
+$54 ==> false
+
+jshell> validar(1, 3, 5)
+$55 ==> true
+
+jshell> //E2.14 Un parqueadero abre a las 8:00 am y cierra a las 6:00 pm. Su sistema de cobro es el siguiente: el usuario paga $10.0 por cada minuto de parqueo, pero tiene un cobro mínimo de $100.0 y tiene un cobro máximo de $3000.0. Haz una función cobro() que retorne un número double siendo el cobro a un usuario, dado un número entero que representa los minutos que estuvo su vehículo en el parqueadero.
+
+jshell> double cobro(int totaMinutos) {
+   ...>     return Math.min(Math.max(totaMinutos*10.0, 100.00), 3000.00);
+   ...> }
+|  created method cobro(int)
+
+jshell> cobro(1)
+$57 ==> 100.0
+
+jshell> cobro(10)
+$58 ==> 100.0
+
+jshell> cobro(15)
+$59 ==> 150.0
+
+jshell> cobro(90)
+$60 ==> 900.0
+
+jshell> cobro(1000)
+$61 ==> 3000.0
+
+jshell> cobro(5000)
+$62 ==> 3000.0
+
+jshell> //E2.15
+
+jshell> int inicio(int resultados, int página) {
+   ...>     return (resultados * página) - 1;
+   ...> }
+|  created method inicio(int,int)
+
+jshell> inicio(6, 1)
+$64 ==> 5
+
+jshell> inicio(6, 2)
+$65 ==> 11
+
+jshell> inicio(6, 3)
+$66 ==> 17
+
+jshell> inicio(10, 2)
+$67 ==> 19
+
+jshell> int inicio(int resultados, int página) {
+   ...>     return (resultados) * (página - 1);
+   ...> }
+|  modified method inicio(int,int)
+
+jshell> inicio(6, 1)
+$69 ==> 0
+
+jshell> inicio(6, 2)
+$70 ==> 6
+
+jshell> inicio(6, 3)
+$71 ==> 12
+
+jshell> inicio(10, 2)
+$72 ==> 10
+
+jshell> /save C:\software\operadores_erik_valencia.txt
+
+jshell>

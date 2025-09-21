@@ -1,0 +1,90 @@
+int truncado(int n) {
+    return n / 10;
+}
+truncado(123)
+truncado(456)
+truncado(9)
+truncado(0)
+int ultimoDigito(int n) {
+    return n % 10;
+}
+ultimoDigito(123)
+ultimoDigito(456)
+ultimoDigito(9)
+ultimoDigito(0)
+unicoDigito(0)
+unicoDigito(0)
+unicoDigito(0)
+unicoDigito(1)
+unicoDigito(5)
+unicoDigito(9)
+unicoDigito(10)
+boolean unicoDigito(int n) {
+    return (n>=0) && (n<10);
+}
+unicoDigito(10)
+unicoDigito(88)
+String signo(int n) {
+    return (n >= 0) ? "no-negativo" : "negativo";
+}
+signo(-1)
+signo(10)
+signo(0)
+signo(-20)
+String esPar(int n) {
+    return (n%2 == 0) ? "es par" : "es impar";
+}
+esPar(2)
+esPar(5)
+String esImpar(int n) {
+    return (n%2 != 0) ? "es impar" : "es par";
+}
+esImpar(3)
+esImpar(5)
+esImpar(2)
+esImpar(4)
+int diferenciaDeCuadrados(int a, int b) {
+    return (a*a) - (b*b);
+}
+diferenciaDeCuadrados(3, 2)
+diferenciaDeCuadrados(1, 1)
+double tercerAngulo(double angulo1, double angulo2) {
+    return 180.0 - (angulo1 + angulo2);
+}
+tercerAngulo(60.0, 60.0)
+tercerAngulo(45.0, 90.0)
+tercerAngulo(35.0, 50.0)
+validarMúltiploDe7(-7)
+boolean validarMúltiploDe7(int n){
+    return (n%7 == 0 && n>0 && n<1000);}
+validarMúltiploDe7(0)
+validarMúltiploDe7(91)
+validarMúltiploDe7(9100)
+boolean validar(int inicio, int mitad, int tamanio) {
+    return (inicio >= 0) && (inicio < mitad) && (mitad < tamanio);
+}
+validar(0, 1, 2)
+validar(1, 1, 2)
+validar(2, 1, 3)
+validar(0, 3, 3)
+validar(1, 3, 5)
+double cobro(int totaMinutos) {
+    return Math.min(Math.max(totaMinutos*10.0, 100.00), 3000.00);
+}
+cobro(1)
+cobro(10)
+cobro(15)
+cobro(90)
+cobro(1000)
+cobro(5000)
+inicio(6, 1)
+inicio(6, 2)
+inicio(6, 3)
+inicio(10, 2)
+int inicio(int resultados, int página) {
+    return (resultados) * (página - 1);
+}
+inicio(6, 1)
+inicio(6, 2)
+inicio(6, 3)
+inicio(10, 2)
