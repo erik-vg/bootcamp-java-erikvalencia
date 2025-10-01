@@ -1,0 +1,163 @@
+double hipotenusa(double a, double b) {
+    double cuadradoDeA = a * a;
+    double cuadradoDeB = b * b;
+    double sumaDeCuadrados = cuadradoDeA + cuadradoDeB;
+    return Math.sqrt(sumaDeCuadrados);
+}
+double tercerÁngulo(double alfa, double beta) {
+    var ángulo = 180.0;
+    ángulo = ángulo - alfa; // actualiza el valor del ángulo
+    // restando alfa del valor actual
+    ángulo = ángulo - beta; // nuevamente, actualiza el ángulo
+    return ángulo;
+}
+double duplicar(double a) {
+    var foo = a * 2;
+    return foo;
+}
+int mod(int p, int q) {
+    var d = p / q;
+    var r = d * q;
+    var m = p - r;
+    return m;
+}
+mod(3, 2)
+mod(4, 2)
+int diferenciaDeCuadrados(int a, int b) {
+    var cuadradoDeA = a * a;
+    var cuadradoDeB = b * b;
+    var diferenciaDeCuadrados = cuadradoDeA - cuadradoDeB;
+    return diferenciaDeCuadrados;
+}
+diferenciaDeCuadrados(3, 4)
+diferenciaDeCuadrados(2, 2)
+double distancia(double x1, double y1, double x2, double y2){
+    var diferenciaDeX = x2 - x1;
+    var cuadradoDeDiferenciaDeX = diferenciaDeX * diferenciaDeX;
+    var diferenciaDeY = y2 - y1; 
+    var cuadradoDeDiferenciaDeY = diferenciaDeY * diferenciaDeY;
+    var sumaDeCuadrados = cuadradoDeDiferenciaDeX + cuadradoDeDiferenciaDeY;
+    var distancia = Math.sqrt(sumaDeCuadrados);
+    return distancia;
+}
+distancia(0.0, 0.0, 1.0, 1.0);
+distancia(0.0, 3.0, 4.0, 0.0);
+fahrenheitACelsius(60.0);
+fahrenheitACelsius(60.0);
+(60-32) * (5/9)
+60-32
+5/9
+5.0/9.0
+double fahrenheitACelsius(double tempFahrenheit) {
+    var cincoNovenos = (5.0/9.0);
+    var diferenciaFahrenheit = tempFahrenheit - 32;
+    var tempCelsius = diferenciaFahrenheit * cincoNovenos;
+    return tempCelsius;
+}
+fahrenheitACelsius(60.0);
+fahrenheitACelsius(32);
+double gravedadSuperficial(double masa, double radio) {
+    final double G = 6.67430e-11;
+    var cuadradoDeRadio = radio * radio;
+    var productoDeGporMasa = G * masa;
+    var gravedad = productoDeGporMasa / cuadradoDeRadio;
+    return gravedad;
+}
+gravedadSuperficial(5.972e24, 6.378e6);
+gravedadSuperficial(6.421e23, 3.3972e6);
+double gravedadSuperficialDeLaTierra() {
+    final double MASA_DE_LA_TIERRA = 5.972e24;
+    final double RADIO_DE_LA_TIERRA = 6.378e6;
+    var gravedad = gravedadSuperficial(MASA_DE_LA_TIERRA, RADIO_DE_LA_TIERRA);
+    return gravedad;
+}
+gravedadSuperficialDeLaTierra();
+double gravedadSuperficialDeMarte() {
+    final double MASA_DE_MARTE = 6.421e23;
+    final double RADIO_DE_MARTE = 3.3972e6;
+    var gravedad = gravedadSuperficial(MASA_DE_MARTE, RADIO_DE_MARTE);
+    return gravedad;
+}
+pesoEnMarte(80.0);
+ gravedadSuperficialDeMarte();
+gravedadSuperficialDeLaTierra() / gravedadSuperficialDeMarte();
+gravedadSuperficialDeLaTierra()
+double pesoEnMarte(double pesoDeLaTierra) {
+    var cocienteDeGravedad = gravedadSuperficialDeMarte() / gravedadSuperficialDeLaTierra();
+    var pesoDeMarte = cocienteDeGravedad * pesoDeLaTierra;
+    return pesoDeMarte;
+}
+pesoEnMarte(80.0);
+pesoEnMarte(65.0);
+double maximoDeTresNumeros(double num1, double num2, double num3) {
+    var maxNum1Num2 = Math.max(num1, num2);
+    var numMax = Math.max(maxNum1Num2, num3);
+    return numMax;
+}
+maximoDeTresNumeros(5.0, 4.0, 8.0);
+maximoDeTresNumeros(9.0, 7.0, 2.0);
+double minimoDeTresNumeros(double num1, double num2, double num3) {
+    var minNum1Num2 = Math.min(num1, num2);
+    var numMin = Math.min(minNum1Num2, num3);
+    return numMin;
+}
+minimoDeTresNumeros(3.00, 6.00, 1.00)
+enMedioDeTresNumeros(6.0, 10.0, 2.0, 10.0, 2.0);
+enMedioDeTresNumeros(6.0, 10.0, 2.0, 10.0, 2.0);
+enMedioDeTresNumeros(6.0, 10.0, 2.0, 10.0, 2.0);
+enMedioDeTresNumeros(20.0, 10.0, 25.0, 10.0, 25.0);
+enMedioDeTresNumeros(20.0, 10.0, 25.0, 25.0, 10.0);
+double enMedioDeTresNumeros(double num1, double num2, double num3, double numMin, double numMax) {
+    var numEnMedio = 0.0;
+    
+    if (numMin < num1 && num1 < numMax) {
+        numEnMedio = num1;
+    }
+    
+    if (numMin < num2 && num2 < numMax) {
+        numEnMedio = num2;    
+    }
+    
+    if (numMin < num3 && num3 < numMax) {
+        numEnMedio = num3;
+    }
+    
+    return numEnMedio;
+}
+enMedioDeTresNumeros(6.0, 10.0, 2.0, 2.0, 10.0)
+enMedioDeTresNumeros(21.0, 30.0, 5.0, 5.0, 30.0)
+esTriángulo(3.0, 4.0, 5.0);
+esTriángulo(3.0, 4.0, 5.0)
+boolean esTriángulo(double ladoA, double ladoB, double ladoC) {
+    double ladoMax = maximoDeTresNumeros(ladoA, ladoB, ladoC);
+    double ladoMin = minimoDeTresNumeros(ladoA, ladoB, ladoC);
+    double ladoMedio = enMedioDeTresNumeros(ladoA, ladoB, ladoC, ladoMin, ladoMax);
+    double sumaDeDosLados = ladoMin + ladoMedio;
+    if(ladoMax < sumaDeDosLados) {
+        return true;
+    } else {
+        return false;
+    }
+}
+esTriángulo(3.0, 4.0, 5.0)
+esTriángulo(17.0, 10.0, 7.0)
+double leyCosenos(double ladoA, double ladoB, double gamma) {
+    double cuadradoDeLadoA = Math.pow(ladoA, 2);
+    double cuadradoDeLadoB = Math.pow(ladoB, 2);
+    double anguloEnRadianes = Math.toRadians(gamma);
+    double coseno = Math.cos(anguloEnRadianes);
+    double operacion = cuadradoDeLadoA + cuadradoDeLadoB - 2 * ladoA * ladoB * coseno;
+    double resultado = Math.sqrt(operacion);
+    return resultado;
+}
+leyCosenos(3.0, 4.0, 90.0);
+leyCosenos(11.0, 11.0, 60.0)
+promedio(11, 16)
+promedio(11, 16)
+double promedio(int edadMenor, int edadMayor) {
+    double sumaEdades = edadMenor + edadMayor;
+    double promedio = sumaEdades / 2;
+    return promedio;
+}
+promedio(11, 16)
+promedio(2, 3)

@@ -1,0 +1,739 @@
+PS C:\Users\invit> jshell
+|  Welcome to JShell -- Version 21.0.7
+|  For an introduction type: /help intro
+
+jshell> double hipotenusa(double a, double b) {
+   ...>     return Math.sqrt((a * a) + (b * b));
+   ...> }
+|  created method hipotenusa(double,double)
+
+jshell> // Código 2 - hipotenusa con variables
+
+jshell> double hipotenusa(double a, double b) {
+   ...>     var cuadradoDeA = a * a;
+   ...> }
+|  Error:
+|  missing return statement
+|  double hipotenusa(double a, double b) {
+|                                        ^
+
+jshell> double hipotenusa(double a, double b) {
+   ...>     var cuadradoDeA = a * a;
+   ...> }
+|  Error:
+|  missing return statement
+|  double hipotenusa(double a, double b) {
+|                                        ^
+
+jshell>
+
+jshell> double hipotenusa(double a, double b) {
+   ...>     var cuadradoDeA = a * a;
+   ...>     var cuadradoDeB = b * b;
+   ...>     var sumaDeCuadrados = cuadradoDeA + cuadradoDeB;
+   ...>     return Math.sqrt(sumaDeCuadrados);
+   ...> }
+   ...>
+|  created method hipotenusa(double,double)
+
+jshell> // Código 3 - hipotenusa usando tipos de datos en lugar de var.
+
+jshell> double hipotenusa(double a, double b) {
+   ...>     double cuadradoDeA = a * a;
+   ...>     double cuadradoDeB = b * b;
+   ...>     double sumaDeCuadrados = cuadradoDeA + cuadradoDeB;
+   ...>     return Math.sqrt(sumaDeCuadrados);
+   ...> }
+|  modified method hipotenusa(double,double)
+
+jshell> double tercerÁngulo(double alfa, double beta) {
+   ...>     // la suma de los 3 ángulos de un triángulo es siempre 180.0
+   ...>     var tercerÁngulo = 180.0 - (alfa + beta);
+   ...>     return tercerÁngulo;
+   ...> }
+|  created method tercer?ngulo(double,double)
+
+jshell> //Código 5 - usar una variable para evitar números mágicos
+
+jshell> double tercerÁngulo(double alfa, double beta) {
+   ...>     var sumaDeTodoslosÁngulos = 180.0;
+   ...>     var sumaDeÁngulosConocidos =  alfa + beta;
+   ...>     var tercerÁngulo = sumaDeTodoslosÁngulos - sumaDeÁngulosConocidos;
+   ...>     return tercerÁngulo;
+   ...> }
+   ...>
+|  modified method tercer?ngulo(double,double)
+
+jshell> double tercerÁngulo(double alfa, double beta) {
+   ...>     var ángulo = 180.0;
+   ...>     ángulo = ángulo - alfa; // actualiza el valor del ángulo
+   ...>     // restando alfa del valor actual
+   ...>     ángulo = ángulo - beta; // nuevamente, actualiza el ángulo
+   ...>     return ángulo;
+   ...> }
+|  modified method tercer?ngulo(double,double)
+
+jshell> //Ejercicios 
+
+jshell> //Errores del compilador y en tiempo de ejecución
+
+jshell> //E3.1
+
+jshell> int duplicar(double a) {
+   ...>     var foo = a * 2;
+   ...>     return foo;
+   ...> }
+|  Error:
+|  incompatible types: possible lossy conversion from double to int
+|      return foo;
+|             ^-^
+
+jshell> double duplicar(double a) {
+   ...>     var foo = a * 2;
+   ...>     return foo;
+   ...> }
+|  created method duplicar(double)
+
+jshell> //Ejercicios de Codificación
+
+jshell> //E3.2
+
+jshell> int mod(int p, int q) {
+   ...>     var d = p / q;
+   ...>     var r = d * q;
+   ...>     var m = p - r;
+   ...>     return m;
+   ...> }
+|  created method mod(int,int)
+
+jshell> mod(3, 2)
+$9 ==> 1
+
+jshell> mod(4, 2)
+$10 ==> 0
+
+jshell> //E3.3
+
+jshell> int diferenciaDeCuadrados(int a, int b) {
+   ...>     var cuadradoDeA = a * a;
+   ...>     var cuadradoDeB = b * b;
+   ...>     var diferenciaDeCuadrados = cuadradoDeA - cuadradoDeB;
+   ...>     return diferenciaDeCuadrados;
+   ...> }
+|  created method diferenciaDeCuadrados(int,int)
+
+jshell> diferenciaDeCuadrados(3, 4)
+$12 ==> -7
+
+jshell> diferenciaDeCuadrados(2, 2)
+$13 ==> 0
+
+jshell> //E3.4
+
+jshell> Escribe una función que calcule la distancia entre dos puntos. Cada punto está representado por 2 doubles; la función toma 4 parámetros: x1, y1, x2 e y2; los dos primeros son las coordenadas x e y del primer punto y los dos últimos son las coordenadas x e y del segundo punto. La fórmula de la distancia es:
+|  Error:
+|  ';' expected
+|  Escribe una función que calcule la distancia entre dos puntos. Cada punto está representado por 2 doubles; la función toma 4 parámetros: x1, y1, x2 e y2; los dos primeros son las coordenadas x e y del primer punto y los dos últimos son las coordenadas x e y del segundo punto. La fórmula de la distancia es:
+|             ^
+
+jshell> //Escribe una función que calcule la distancia entre dos puntos. Cada punto está representado por 2 doubles; la función toma 4 parámetros: x1, y1, x2 e y2; los dos primeros son las coordenadas x e y del primer punto y los dos últimos son las coordenadas x e y del segundo punto. La fórmula de la distancia es:
+
+jshell> double distancia(double x1, double y1, double x2 e double y2){
+   ...>     var diferenciaDeX = x2 - x1;
+jshell> double distancia(double x1, double y1, double x2 e double y2){
+   ...>     var diferenciaDeX = x2 - x1;
+   ...>     var cuadradoDeDiferenciaDeX = diferenciaDeX * diferenciaDeX;
+   ...>     var diferenciaDeY = y2 - y1;
+   ...>     var cuadradoDeDiferenciaDeY = diferenciaDeY * diferenciaDeY;
+   ...>     var sumaDeCuadrados = cuadradoDeDiferenciaDeX + cuadradoDeDiferenciaDeY;
+   ...>     var distancia = Math.sqrt(sumaDeCuadrados);
+   ...>     return distancia;
+   ...> }
+|  Error:
+|  ',', ')', or '[' expected
+|  double distancia(double x1, double y1, double x2 e double y2){
+|                                                  ^
+
+jshell> double distancia(double x1, double y1, double x2, double y2){
+   ...>     var diferenciaDeX = x2 - x1;
+   ...>     var cuadradoDeDiferenciaDeX = diferenciaDeX * diferenciaDeX;
+   ...>     var diferenciaDeY = y2 - y1;
+   ...>     var cuadradoDeDiferenciaDeY = diferenciaDeY * diferenciaDeY;
+   ...>     var sumaDeCuadrados = cuadradoDeDiferenciaDeX + cuadradoDeDiferenciaDeY;
+   ...>     var distancia = Math.sqrt(sumaDeCuadrados);
+   ...>     return distancia;
+   ...> }
+|  created method distancia(double,double,double,double)
+
+jshell> distancia(0.0, 0.0, 1.0, 1.0);
+$15 ==> 1.4142135623730951
+
+jshell> distancia(0.0, 3.0, 4.0, 0.0);
+$16 ==> 5.0
+
+jshell> //E3.5
+
+jshell> //Escribe una función que, dada una temperatura medida en Fahrenheit como double, devuelva el valor equivalente en Celsius. Utiliza la fórmula: C = (F - 32) * 5/9
+
+jshell> double fahrenheitACelsius(double tempFahrenheit) {
+   ...>     var cincoNovenos = 5/9;
+   ...>     var diferenciaFahrenheit = tempFahrenheit - 32;
+   ...>     var tempCelsius = diferenciaFahrenheit * cincoNovenos;
+   ...>     return tempCelsius;
+   ...> }
+|  created method fahrenheitACelsius(double)
+
+jshell> ahrenheitACelsius(60.0);
+|  Error:
+|  cannot find symbol
+|    symbol:   method ahrenheitACelsius(double)
+|  ahrenheitACelsius(60.0);
+|  ^---------------^
+
+jshell> fahrenheitACelsius(60.0);
+$18 ==> 0.0
+
+jshell> double fahrenheitACelsius(double tempFahrenheit) {
+   ...>     var cincoNovenos = 5/9;
+   ...>     var diferenciaFahrenheit = tempFahrenheit - 32;
+   ...>     var tempCelsius = diferenciaFahrenheit * cincoNovenos;
+   ...>     return tempCelsius;
+   ...> }
+|  modified method fahrenheitACelsius(double)
+
+jshell> fahrenheitACelsius(60.0);
+$20 ==> 0.0
+
+jshell> (60-32) * (5/9)
+$21 ==> 0
+
+jshell> 60-32
+$22 ==> 28
+
+jshell> 5/9
+$23 ==> 0
+
+jshell> 5.0/9.0
+$24 ==> 0.5555555555555556
+
+jshell> double fahrenheitACelsius(double tempFahrenheit) {
+   ...>     var cincoNovenos = (5.0/9.0);
+   ...>     var diferenciaFahrenheit = tempFahrenheit - 32;
+   ...>     var tempCelsius = diferenciaFahrenheit * cincoNovenos;
+   ...>     return tempCelsius;
+   ...> }
+|  modified method fahrenheitACelsius(double)
+
+jshell> fahrenheitACelsius(60.0);
+$26 ==> 15.555555555555557
+
+jshell> fahrenheitACelsius(32);
+$27 ==> 0.0
+
+jshell> //E3.6
+
+jshell> //Escribe una función que calcule la gravedad superficial de un planeta dada la masa y el radio de este.
+
+jshell> double gravedadSuperficial(double masa, double radio) {
+   ...>     private static final double G = 6.67430e-11;
+   ...>     var cuadradoDeRadio = radio * radio;
+   ...>     var productoDeGporMasa = G * masa;
+   ...>     var gravedad = productoDeGporMasa / cuadradoDeRadio;
+   ...>     return gravedad;
+   ...> }
+|  Error:
+|  illegal start of expression
+|      private static final double G = 6.67430e-11;
+|      ^
+
+jshell> double gravedadSuperficial(double masa, double radio) {
+   ...>     static final double G = 6.67430e-11;
+   ...>     var cuadradoDeRadio = radio * radio;
+   ...>     var productoDeGporMasa = G * masa;
+   ...>     var gravedad = productoDeGporMasa / cuadradoDeRadio;
+   ...>     return gravedad;
+   ...> }
+|  Error:
+|  illegal start of expression
+|      static final double G = 6.67430e-11;
+|      ^
+
+jshell> double gravedadSuperficial(double masa, double radio) {
+   ...>     final double G = 6.67430e-11;
+   ...>     var cuadradoDeRadio = radio * radio;
+   ...>     var productoDeGporMasa = G * masa;
+   ...>     var gravedad = productoDeGporMasa / cuadradoDeRadio;
+   ...>     return gravedad;
+   ...> }
+|  created method gravedadSuperficial(double,double)
+
+jshell> gravedadSuperficial(5.972e24, 6.378e6);
+$29 ==> 9.798429966761134
+
+jshell> gravedadSuperficial(6.421e23, 3.3972e6);
+$30 ==> 3.713352371667296
+
+jshell> //E3.7
+
+jshell> //Escribe una función que calcule la gravedad superficial de la tierra. Para este ejercicio asume que la masa de la tierra en literal de doubles es 5.972e24 y el radio es 6.378e6. Utiliza la fórmula del ejercicio anterior.
+
+jshell> double gravedadSuperficialDeLaTierra() {
+   ...>     final double MASA_DE_LA_TIERRA = 5.972e24;
+jshell> double gravedadSuperficialDeLaTierra() {378e6;
+   ...>     final double MASA_DE_LA_TIERRA = 5.972e24;
+   ...>     final double RADIO_DE_LA_TIERRA = 6.378e6;eLaTierra()   
+   ...>     var double gravedad = gravedadSuperficial(MASA_DE_LA_TIERRA, RADIO_DE_LA_TIERRA);
+   ...>     return gravedad;
+   ...> }
+   ...>
+|  Error:
+|  not a statement
+|      var double gravedad = gravedadSuperficial(MASA_DE_LA_TIERRA, RADIO_DE_LA_TIERRA);
+|      ^-^
+|  Error:
+|  ';' expected
+|      var double gravedad = gravedadSuperficial(MASA_DE_LA_TIERRA, RADIO_DE_LA_TIERRA);
+|         ^
+
+jshell> double gravedadSuperficialDeLaTierra() {
+   ...>     final double MASA_DE_LA_TIERRA = 5.972e24;
+   ...>     final double RADIO_DE_LA_TIERRA = 6.378e6;
+   ...>     var double gravedad = gravedadSuperficial(MASA_DE_LA_TIERRA, RADIO_DE_LA_TIERRA);
+   ...>     return gravedad;
+   ...> }
+|  Error:
+|  not a statement
+|      var double gravedad = gravedadSuperficial(MASA_DE_LA_TIERRA, RADIO_DE_LA_TIERRA);
+|      ^-^
+|  Error:
+|  ';' expected
+|      var double gravedad = gravedadSuperficial(MASA_DE_LA_TIERRA, RADIO_DE_LA_TIERRA);
+|         ^
+
+jshell> double gravedadSuperficialDeLaTierra() {
+   ...>     final double MASA_DE_LA_TIERRA = 5.972e24;
+   ...>     final double RADIO_DE_LA_TIERRA = 6.378e6;
+   ...>     var gravedad = gravedadSuperficial(MASA_DE_LA_TIERRA, RADIO_DE_LA_TIERRA);
+   ...>     return gravedad;
+   ...> }
+|  created method gravedadSuperficialDeLaTierra()
+
+jshell> gravedadSuperficialDeLaTierra();
+$32 ==> 9.798429966761134
+
+jshell> double gravedadSuperficialDeMarte() {
+   ...>     final double MASA_DE_MARTE = 6.421e23;
+   ...>     final double RADIO_DE_MARTE = 3.3972e6;
+   ...>     var gravedad = gravedadSuperficial(MASA_DE_MARTE, RADIO_DE_MARTE);
+   ...>     return gravedad;
+   ...> }
+|  created method gravedadSuperficialDeMarte()
+
+jshell> //E3.8
+
+jshell> //Escribe una función que tome el peso de una persona en la tierra, y devuelva el peso de esa persona en Marte.
+
+jshell> double pesoEnMarte(double pesoDeLaTierra) {
+   ...>     var cocienteDeGravedad = gravedadSuperficialDeLaTierra() / gravedadSuperficialDeMarte();
+   ...>     var pesoDeMarte = cocienteDeGravedad * pesoDeLaTierra;
+   ...>     return pesoDeMarte;
+   ...> }
+|  created method pesoEnMarte(double)
+
+jshell> pesoEnMarte(80.0);
+$35 ==> 211.09615217823534
+
+jshell>  gravedadSuperficialDeMarte();
+$36 ==> 3.713352371667296
+
+jshell> gravedadSuperficialDeLaTierra() / gravedadSuperficialDeMarte();
+$37 ==> 2.638701902227942
+
+jshell> gravedadSuperficialDeLaTierra() 
+$38 ==> 9.798429966761134
+
+jshell> double pesoEnMarte(double pesoDeLaTierra) {
+   ...>     var cocienteDeGravedad = gravedadSuperficialDeMarte() / gravedadSuperficialDeLaTierra();
+   ...>     var pesoDeMarte = cocienteDeGravedad * pesoDeLaTierra;
+   ...>     return pesoDeMarte;
+   ...> }
+|  modified method pesoEnMarte(double)
+
+jshell> pesoEnMarte(80.0);
+$40 ==> 30.31793774524261
+
+jshell> pesoEnMarte(65.0);
+$41 ==> 24.63332441800962
+
+jshell> //E3.9
+
+jshell> //Un Triángulo es un polígono cerrado de 3 lados. Cada lado tiene una longitud, pero ¿crees que dadas 3 longitudes aleatorias siempre puedes dibujar un triángulo con ellas? La respuesta es no, hay una propiedad de los 3 lados que debe ser cierta para formar un triángulo: el lado más largo debe ser menor que la suma de los otros 2 lados.
+
+jshell> double maximoDeTresNumeros(double num1, double num2, double num3) {
+   ...>     var maxNum1Num2 = Math.max(num1, num2);
+   ...>     var numMax = Math.max(maxNum1Num2, num3);
+   ...>     return numMax;
+   ...> }
+|  created method maximoDeTresNumeros(double,double,double)
+
+jshell> maximoDeTresNumeros(5.0, 4.0, 8.0);
+$43 ==> 8.0
+
+jshell> maximoDeTresNumeros(9.0, 7.0, 2.0);
+$44 ==> 9.0
+
+jshell> double minimoDeTresNumeros(double num1, double num2, double num3) {
+   ...>     var minNum1Num2 = Math.min(num1, num2);
+   ...>     var numMin = Math.min(minNum1Num2, num3);
+   ...>     return numMin;
+   ...> }
+|  created method minimoDeTresNumeros(double,double,double)
+
+jshell>
+
+jshell> minimoDeTresNumeros(3.00, 6.00, 1.00)
+$46 ==> 1.0
+
+jshell> double enMedioDeTresNumeros(double num1, double num2, double num3, double numMax, double numMin) {
+   ...>     var numEnMedio = 0.0;
+   ...>     
+   ...>     if (numMin > num1 < numMax) {
+   ...>         numEnMedio = num1;
+   ...>     }
+   ...>
+   ...>     if (numMin > num2 < numMax) {
+   ...>         numEnMedio = num2;
+   ...>     }
+   ...>
+   ...>     if (numMin > num3 < numMax) {
+   ...>         numEnMedio = num3;
+   ...>     }
+   ...>     
+   ...>     return numEnMedio;
+   ...> }
+|  Error:
+|  bad operand types for binary operator '<'
+|    first type:  boolean
+|    second type: double
+|      if (numMin > num1 < numMax) {
+|          ^--------------------^
+|  Error:
+|  bad operand types for binary operator '<'
+|    first type:  boolean
+|    second type: double
+|      if (numMin > num2 < numMax) {
+|          ^--------------------^
+|  Error:
+|  bad operand types for binary operator '<'
+|    first type:  boolean
+|    second type: double
+|      if (numMin > num3 < numMax) {
+|          ^--------------------^
+
+jshell> double enMedioDeTresNumeros(double num1, double num2, double num3, double numMax, double numMin) {
+   ...>     var numEnMedio = 0.0;
+   ...>
+   ...>     if (numMin <= num1 && num1 >= numMax) {
+   ...>         numEnMedio = num1;
+   ...>     }
+   ...>
+   ...>     if (numMin <= num1 && num2 >= numMax) {
+   ...>         numEnMedio = num2;
+   ...>     }
+   ...>
+   ...>     if (numMin <= num1 && num3 >= numMax) {   ...>         numEnMedio = num3;
+   ...>     }
+   ...>
+   ...>     return numEnMedio;
+   ...> }
+|  created method enMedioDeTresNumeros(double,double,double,double,double)
+
+jshell> enMedioDeTresNumeros
+|  Error:
+|  cannot find symbol
+|    symbol:   variable enMedioDeTresNumeros
+|  enMedioDeTresNumeros
+|  ^------------------^
+
+jshell> enMedioDeTresNumeros(6.0, 10.0, 2.0)
+|  Error:
+|  method enMedioDeTresNumeros in class  cannot be applied to given types;
+|    required: double,double,double,double,double
+|    found:    double,double,double
+|    reason: actual and formal argument lists differ in length
+|  enMedioDeTresNumeros(6.0, 10.0, 2.0)
+|  ^------------------^
+
+jshell> enMedioDeTresNumeros(6.0, 10.0, 2.0, 10.0, 2.0);
+$48 ==> 10.0
+
+jshell> double enMedioDeTresNumeros(double num1, double num2, double num3, double numMax, double numMin) {
+   ...>     var numEnMedio = 0.0;
+   ...>
+   ...>     if (numMin <= num1 && num1 >= numMax) {
+   ...>         numEnMedio = num1;
+   ...>     }
+   ...>
+   ...>     if (numMin <= num2 && num2 >= numMax) {
+   ...>         numEnMedio = num2;
+   ...>     }
+   ...>
+   ...>     if (numMin <= num3 && num3 >= numMax) {
+   ...>         numEnMedio = num3;
+   ...>     }
+   ...>
+   ...>     return numEnMedio;
+   ...> }
+|  modified method enMedioDeTresNumeros(double,double,double,double,double)
+
+jshell> enMedioDeTresNumeros(6.0, 10.0, 2.0, 10.0, 2.0);
+$50 ==> 10.0
+
+jshell> double enMedioDeTresNumeros(double num1, double num2, double num3, double numMax, double numMin) {
+   ...>     var numEnMedio = 0.0;
+   ...>     
+   ...>     if (numMin < num1 && num1 < numMax) {
+   ...>         numEnMedio = num1;
+   ...>     }
+   ...>     
+   ...>     if (numMin < num2 && num2 < numMax) {
+   ...>         numEnMedio = num2;    
+   ...>     }
+   ...>     
+   ...>     if (numMin < num3 && num3 < numMax) {
+   ...>         numEnMedio = num3;
+   ...>     }
+   ...>
+   ...>     return numEnMedio;
+   ...> }
+|  modified method enMedioDeTresNumeros(double,double,double,double,double)
+
+jshell> enMedioDeTresNumeros(6.0, 10.0, 2.0, 10.0, 2.0);
+$52 ==> 6.0
+
+jshell> enMedioDeTresNumeros(20.0, 10.0, 25.0, 10.0, 25.0);
+$53 ==> 0.0
+
+jshell> enMedioDeTresNumeros(20.0, 10.0, 25.0, 25.0, 10.0);
+$54 ==> 20.0
+
+jshell> double enMedioDeTresNumeros(double num1, double num2, double num3, double numMin, double numMax) {
+   ...>     var numEnMedio = 0.0;
+   ...>
+   ...>     if (numMin < num1 && num1 < numMax) {
+   ...>         numEnMedio = num1;
+   ...>     }
+   ...>
+   ...>     if (numMin < num2 && num2 < numMax) {
+   ...>         numEnMedio = num2;
+   ...>     }
+   ...>
+   ...>     if (numMin < num3 && num3 < numMax) {
+   ...>         numEnMedio = num3;
+   ...>     }
+   ...>
+   ...>     return numEnMedio;
+   ...> }
+|  modified method enMedioDeTresNumeros(double,double,double,double,double)
+
+jshell> enMedioDeTresNumeros(6.0, 10.0, 2.0, 2.0, 10.0)
+$56 ==> 6.0
+
+jshell> enMedioDeTresNumeros(21.0, 30.0, 5.0, 5.0, 30.0)
+$57 ==> 21.0
+
+jshell> boolean esTriángulo(double ladoA, double ladoB, double ladoC) {
+   ...>     double ladoMin = minimoDeTresNumeros(ladoA, ladoB, ladoC);
+   ...>     double ladoMedio = enMedioDeTresNumeros(ladoA, ladoB, ladoC);
+   ...>     double maximoDeTresNumeros(ladoA, ladoB, ladoC);
+   ...>     duble sumaDeDosLados = ladoMin + ladoMedio;
+   ...>     if(maximoDeTresNumeros < sumaDeDosLados) {
+   ...>         return true;
+   ...>     } else {
+   ...>         return false;
+   ...>     }
+   ...> }
+|  Error:
+|  ';' expected
+|      double maximoDeTresNumeros(ladoA, ladoB, ladoC);
+|                                ^
+|  Error:
+|  not a statement
+|      double maximoDeTresNumeros(ladoA, ladoB, ladoC);
+|                                 ^---^
+|  Error:
+|  ';' expected
+|      double maximoDeTresNumeros(ladoA, ladoB, ladoC);
+|                                      ^
+|  Error:
+|  not a statement
+|      double maximoDeTresNumeros(ladoA, ladoB, ladoC);
+|                                        ^---^
+|  Error:
+|  ';' expected
+|      double maximoDeTresNumeros(ladoA, ladoB, ladoC);
+|                                             ^
+|  Error:
+|  not a statement
+|      double maximoDeTresNumeros(ladoA, ladoB, ladoC);
+|                                               ^---^
+|  Error:
+|  ';' expected
+|      double maximoDeTresNumeros(ladoA, ladoB, ladoC);
+|                                                    ^
+
+jshell> boolean esTriángulo(double ladoA, double ladoB, double ladoC) {
+   ...>     double ladoMin = minimoDeTresNumeros(ladoA, ladoB, ladoC);
+   ...>     double ladoMedio = enMedioDeTresNumeros(ladoA, ladoB, ladoC, ladoMin, maximoDeTresNumeros);
+   ...>     duble sumaDeDosLados = ladoMin + ladoMedio;
+   ...>     if(maximoDeTresNumeros < sumaDeDosLados) {
+   ...>         return true;
+   ...>     } else {
+   ...>         return false;
+   ...>     }
+   ...> }
+|  created method esTriángulo(double,double,double), however, it cannot be invoked until variable maximoDeTresNumeros, and class duble are declared
+
+jshell> boolean esTriángulo(double ladoA, double ladoB, double ladoC) {
+   ...>     double maximoDeTresNumeros(ladoA, ladoB, ladoC);
+   ...>     double ladoMin = minimoDeTresNumeros(ladoA, ladoB, ladoC);
+   ...>     double ladoMedio = enMedioDeTresNumeros(ladoA, ladoB, ladoC, ladoMin, maximoDeTresNumeros);
+   ...>     duble sumaDeDosLados = ladoMin + ladoMedio;
+   ...>     if(maximoDeTresNumeros < sumaDeDosLados) {
+   ...>         return true;
+   ...>     } else {
+   ...>         return false;
+   ...>     }
+   ...> }
+|  Error:
+|  ';' expected
+|      double maximoDeTresNumeros(ladoA, ladoB, ladoC);
+|                                ^
+|  Error:
+|  not a statement
+|      double maximoDeTresNumeros(ladoA, ladoB, ladoC);
+|                                 ^---^
+|  Error:
+|  ';' expected
+|      double maximoDeTresNumeros(ladoA, ladoB, ladoC);
+|                                      ^
+|  Error:
+|  not a statement
+|      double maximoDeTresNumeros(ladoA, ladoB, ladoC);
+|                                        ^---^
+|  Error:
+|  ';' expected
+|      double maximoDeTresNumeros(ladoA, ladoB, ladoC);
+|                                             ^
+|  Error:
+|  not a statement
+|      double maximoDeTresNumeros(ladoA, ladoB, ladoC);
+|                                               ^---^
+|  Error:
+|  ';' expected
+|      double maximoDeTresNumeros(ladoA, ladoB, ladoC);
+|                                                    ^
+
+jshell> boolean esTriángulo(double ladoA, double ladoB, double ladoC) {
+   ...>     double ladoMax = maximoDeTresNumeros(ladoA, ladoB, ladoC);
+   ...>     double ladoMin = minimoDeTresNumeros(ladoA, ladoB, ladoC);
+   ...>     double ladoMedio = enMedioDeTresNumeros(ladoA, ladoB, ladoC, ladoMin, ladoMax);
+   ...>     duble sumaDeDosLados = ladoMin + ladoMedio;
+   ...>     if(ladoMax < sumaDeDosLados) {
+   ...>         return true;
+   ...>     } else {
+   ...>         return false;
+   ...>     }
+   ...> }
+|  modified method esTriángulo(double,double,double), however, it cannot be invoked until class duble is declared
+
+jshell> esTriángulo(3.0, 4.0, 5.0);
+|  attempted to call method esTriángulo(double,double,double) which cannot be invoked until class duble is declared
+
+jshell> esTriángulo(3.0, 4.0, 5.0)
+|  attempted to call method esTriángulo(double,double,double) which cannot be invoked until class duble is declared
+
+jshell> boolean esTriángulo(double ladoA, double ladoB, double ladoC) {
+   ...>     double ladoMax = maximoDeTresNumeros(ladoA, ladoB, ladoC);
+   ...>     double ladoMin = minimoDeTresNumeros(ladoA, ladoB, ladoC);
+   ...>     double ladoMedio = enMedioDeTresNumeros(ladoA, ladoB, ladoC, ladoMin, ladoMax);
+   ...>     double sumaDeDosLados = ladoMin + ladoMedio;
+   ...>     if(ladoMax < sumaDeDosLados) {
+   ...>         return true;
+   ...>     } else {
+   ...>         return false;
+   ...>     }
+   ...> }
+|  modified method esTriángulo(double,double,double)
+
+jshell> esTriángulo(3.0, 4.0, 5.0)
+$63 ==> true
+
+jshell> esTriágulo(17.0, 10.0, 7.0)
+|  Error:
+|  cannot find symbol
+|    symbol:   method esTriágulo(double,double,double)
+|  esTriágulo(17.0, 10.0, 7.0)
+|  ^--------^
+
+jshell> esTriángulo(17.0, 10.0, 7.0)
+$64 ==> false
+
+jshell> //E3.10
+
+jshell> //Ley de Cosenos
+
+jshell> double leyCosenos(double ladoA, double ladoB, double gamma) {
+   ...>     double cuadradoDeLadoA = Math.pow(ladoA, 2);
+   ...>     double cuadradoDeLadoB = Math.pow(ladoB, 2);
+   ...>     double anguloEnRadianes = Math.toRadians(gamma);
+   ...>     double coseno = Math.cos(anguloEnRadianes);
+   ...>     double operacion = cuadradoDeLadoA + cuadradoDeLadoB - 2 * ladoA * ladoB * coseno;
+   ...>     double resultado = Math.sqrt(operacion);
+   ...>     return resultado;
+   ...> }
+   ...>
+|  created method leyCosenos(double,double,double)
+
+jshell> leyCosenos(3.0, 4.0, 90.0);
+$66 ==> 5.0
+
+jshell> leyCosenos(11.0, 11.0, 60.0)
+$67 ==> 10.999999999999998
+
+jshell> //E3.11
+
+jshell> double promedio(int edadMenor, int edadMayor) {
+   ...>     var sumaEdades = edadMenor + edadMayor;
+   ...>     var promedio = sumaEdades / 2;
+   ...>     return promedio;
+   ...> }
+|  created method promedio(int,int)
+
+jshell> promedio(11, 16)
+$69 ==> 13.0
+
+jshell> double promedio(int edadMenor, int edadMayor) {
+   ...>     var sumaEdades = edadMenor + edadMayor;
+   ...>     double promedio = sumaEdades / 2;
+   ...>     return promedio;
+   ...> }
+|  modified method promedio(int,int)
+
+jshell> promedio(11, 16)
+$71 ==> 13.0
+
+jshell> double promedio(int edadMenor, int edadMayor) {
+   ...>     double sumaEdades = edadMenor + edadMayor;
+   ...>     double promedio = sumaEdades / 2;
+   ...>     return promedio;
+   ...> }
+|  modified method promedio(int,int)
+
+jshell> promedio(11, 16)
+$73 ==> 13.5
+
+jshell> promedio(2, 3)
+$74 ==> 2.5
+
+jshell>
