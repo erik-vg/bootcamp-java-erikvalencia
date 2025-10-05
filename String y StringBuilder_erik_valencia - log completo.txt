@@ -1,0 +1,638 @@
+
+invit@DESKTOP-EHN4TKO MINGW64 ~
+$ jshell
+|  Welcome to JShell -- Version 21.0.7
+|  For an introduction type: /help intro
+
+jshell> //E4.1
+
+jshell> boolean empiezaConMinúscula(String s) {
+   ...>     var primerCaracter = String.charAt(s, 0);
+   ...>     return Character.isLowerCase(primerCaracter);
+   ...> }
+|  Error:
+|  method charAt in class java.lang.String cannot be applied to given types;
+|    required: int
+|    found:    java.lang.String,int
+|    reason: actual and formal argument lists differ in length
+|      var primerCaracter = String.charAt(s, 0);
+|                           ^-----------^
+|  created method empiezaConMinúscula(String), however, it cannot be invoked until this error is corrected: 
+|      method charAt in class java.lang.String cannot be applied to given types;
+|        required: int
+|        found:    java.lang.String,int
+|        reason: actual and formal argument lists differ in length
+|          var primerCaracter = String.charAt(s, 0);
+|                               ^-----------^
+
+jshell> boolean empiezaConMinúscula(String s) {
+   ...>     var primerCaracter = s.charAt(0);
+   ...>     return Character.isLowerCase(primerCaracter);
+   ...> }
+|  modified method empiezaConMinúscula(String)
+
+jshell> empiezaConMinúscula("manzana")
+$3 ==> true
+
+jshell> empiezaConMinúscula("Manzana")
+$4 ==> false
+
+jshell> //E4.2
+
+jshell> String pluralizar(int conteo, String s) {
+   ...>     return (conteo < 2) ? s : s.format("%d %ss", conteo);
+   ...> }
+|  created method pluralizar(int,String)
+
+jshell> pluralizar(1, "código")
+$6 ==> "código"
+
+jshell> pluralizar(2, "código")
+|  Exception java.util.MissingFormatArgumentException: Format specifier '%s'
+|        at Formatter.format (Formatter.java:2790)
+|        at Formatter.format (Formatter.java:2728)
+|        at String.format (String.java:4390)
+|        at pluralizar (#5:2)
+|        at (#7:1)
+
+jshell> String pluralizar(int conteo, String s) {
+   ...>     return (conteo < 2) ? s : s.format("%d %ss", conteo, s);
+   ...> }
+|  modified method pluralizar(int,String)
+
+jshell> pluralizar(2, "código")
+$9 ==> "2 códigos"
+
+jshell> //E4.3
+
+jshell> boolean esVocal(char letra) {
+   ...>     var letraMinúscula = Character.toLowerCase(letra);
+   ...>     return 'aeiou'.contains(Character.toString(letraMinúscula));
+|  Error:
+|  unclosed character literal
+|      return 'aeiou'.contains(Character.toString(letraMinúscula));
+|             ^
+|  Error:
+|  unclosed character literal
+|      return 'aeiou'.contains(Character.toString(letraMinúscula));
+|                   ^
+|  Error:
+|  not a statement
+|      return 'aeiou'.contains(Character.toString(letraMinúscula));
+|               ^--^
+|  Error:
+|  reached end of file while parsing
+|      return 'aeiou'.contains(Character.toString(letraMinúscula));
+|                                                                  ^
+
+jshell> boolean esVocal(char letra) {
+   ...>     var letraMinúscula = Character.toLowerCase(letra);
+   ...>     return "aeiou".contains(Character.toString(letraMinúscula));
+   ...> }
+|  created method esVocal(char)
+
+jshell> esVocal('a')
+$11 ==> true
+
+jshell> esVocal('A')
+$12 ==> true
+
+jshell> esVocal('c')
+$13 ==> false
+
+jshell> esVocal('@')
+$14 ==> false
+
+jshell> //E4.4
+
+jshell> String titleCase(String texto) {
+   ...>     var primeraLetra = texto.substring(0, 1);
+   ...>     var restoDelTexto = texto.substring(1);
+   ...>     return String.format("%S%s", primeraLetra, restoDelTexto.toLowerCase());
+   ...> }
+|  created method titleCase(String)
+
+jshell> titleCase("java")
+$16 ==> "Java"
+
+jshell> titleCase("Java")
+$17 ==> "Java"
+
+jshell> titleCase("JAVA")
+$18 ==> "Java"
+
+jshell> //E4.5
+
+jshell> boolean terminaEnS(String texto) {
+   ...>     var últimoCaracter = texto.substring(texto.length() - 1);
+   ...>     return (últimoCaracter == 's') || (últimoCaracter == 'S');
+   ...> }
+   ...>
+|  Error:
+|  bad operand types for binary operator '=='
+|    first type:  java.lang.String
+|    second type: char
+|      return (últimoCaracter == 's') || (últimoCaracter == 'S');
+|              ^-------------------^
+|  Error:
+|  bad operand types for binary operator '=='
+|    first type:  java.lang.String
+|    second type: char
+|      return (últimoCaracter == 's') || (últimoCaracter == 'S');
+|                                         ^-------------------^
+
+jshell> boolean terminaEnS(String texto) {
+   ...>     char últimoCaracter = texto.substring(texto.length() - 1);
+   ...>     return (últimoCaracter == 's') || (últimoCaracter == 'S');
+   ...> }
+|  Error:
+|  incompatible types: java.lang.String cannot be converted to char
+|      char últimoCaracter = texto.substring(texto.length() - 1);
+|                            ^---------------------------------^
+
+jshell> boolean terminaEnS(String texto) {
+   ...>     char últimoCaracter = (char) texto.substring(texto.length() - 1);
+   ...>     return (últimoCaracter == 's') || (últimoCaracter == 'S');
+   ...> }
+|  Error:
+|  incompatible types: java.lang.String cannot be converted to char
+|      char últimoCaracter = (char) texto.substring(texto.length() - 1);
+|                                   ^---------------------------------^
+
+jshell> boolean terminaEnS(String texto) {
+   ...>     var últimoCaracter = (char) texto.substring(texto.length() - 1);
+   ...>     return (últimoCaracter == 's') || (últimoCaracter == 'S');
+   ...> }
+|  Error:
+|  incompatible types: java.lang.String cannot be converted to char
+|      var últimoCaracter = (char) texto.substring(texto.length() - 1);
+|                                  ^---------------------------------^
+
+jshell> boolean terminaEnS(String texto) {
+   ...>     var últimoCaracter = texto.substring(texto.length() - 1);
+   ...>     return (últimoCaracter == 's') || (últimoCaracter == 'S');
+   ...> }
+|  Error:
+|  bad operand types for binary operator '=='
+|    first type:  java.lang.String
+|    second type: char
+|      return (últimoCaracter == 's') || (últimoCaracter == 'S');
+|              ^-------------------^
+|  Error:
+|  bad operand types for binary operator '=='
+|    first type:  java.lang.String
+|    second type: char
+|      return (últimoCaracter == 's') || (últimoCaracter == 'S');
+|                                         ^-------------------^
+
+jshell> boolean terminaEnS(String texto) {
+   ...>     var últimoCaracter = texto.substring(texto.length() - 1);
+   ...>     return (últimoCaracter == "s") || (últimoCaracter == "S");
+   ...> }
+|  created method terminaEnS(String)
+
+jshell> terminaEnS("miércoles")
+$20 ==> false
+
+jshell> boolean terminaEnS(String texto) {
+   ...>     var últimoCaracter = texto.substring(texto.length() - 1);
+   ...>     return (últimoCaracter == 's') || (últimoCaracter == 'S');
+   ...> }
+|  Error:
+|  bad operand types for binary operator '=='
+|    first type:  java.lang.String
+|    second type: char
+|      return (últimoCaracter == 's') || (últimoCaracter == 'S');
+|              ^-------------------^
+|  Error:
+|  bad operand types for binary operator '=='
+|    first type:  java.lang.String
+|    second type: char
+|      return (últimoCaracter == 's') || (últimoCaracter == 'S');
+|                                         ^-------------------^
+
+);
+   ...> }
+|  created method terminaEnS(String)
+
+jshell> terminaEnS("miércoles")
+$22 ==> true
+
+jshell> terminaEnS("jueves")
+$23 ==> true
+
+jshell> terminaEnS("sábado")
+$24 ==> false
+
+jshell> //E4.6
+
+jshell> boolean esPalindrome(String texto) {
+   ...>     var textoToLowerCase = texto.toLowerCase();
+   ...>     return textoToLowerCase.charAt(0) == textoToLowerCase.charAt(1);
+   ...> }
+|  created method esPalindrome(String)
+
+jshell> esPalindrome("ab")
+$26 ==> false
+
+jshell> esPalindrome("ee")
+$27 ==> true
+
+jshell> esPalindrome("Aa")
+$28 ==> true
+
+jshell> //E4.7
+
+jshell> boolean esExterno(String enlace) {
+   ...>     return enlace.startsWith("http") || enlace.startsWith("https");
+   ...> }
+|  created method esExterno(String)
+
+jshell> esExterno("/definetely-internal")
+$30 ==> false
+
+jshell> esExterno("https://www.java.com")
+$31 ==> true
+
+jshell> esExterno("http://dont-go.com")
+$32 ==> true
+
+jshell> //E4.8
+
+jshell> String extension(String nombreArchivo) {
+   ...>     int index = nombreArchivo.indexOf(".");
+   ...>     String extension = nombreArchivo.substring(index);
+   ...>     return extension;
+   ...> }
+|  created method extension(String)
+
+jshell> extension("debug.sh")
+$34 ==> ".sh"
+
+jshell> String extension(String nombreArchivo) {
+   ...>     int index = nombreArchivo.indexOf(".");
+   ...>     String extension = nombreArchivo.substring(index + 1);
+   ...>     return extension;
+   ...> }
+|  modified method extension(String)
+
+jshell> extension("debug.sh")
+$36 ==> "sh"
+
+jshell> extension("/path/to/debug.sh")
+$37 ==> "sh"
+
+jshell> extension("/the.dot/file.java")
+$38 ==> "dot/file.java"
+
+jshell> String extension(String nombreArchivo) {
+   ...>     int index = nombreArchivo.lastIndexOf(".");
+   ...>     String extension = nombreArchivo.substring(index + 1);
+   ...>     return extension;
+   ...> }
+|  modified method extension(String)
+
+jshell> extension("/the.dot/file.java")
+$40 ==> "java"
+
+jshell> extension("no-extension")
+$41 ==> "no-extension"
+
+jshell> String extension(String nombreArchivo) {
+   ...>     String extension = "";
+   ...>     int index = nombreArchivo.lastIndexOf(".");
+   ...>     if (index == -1) {
+   ...>         return extension;
+   ...>     } else {
+   ...>         return nombreArchivo.substring(index + 1);
+   ...>     }
+   ...> }
+   ...> 
+|  modified method extension(String)
+
+jshell> extension("no-extension")
+$43 ==> ""
+
+jshell> //E4.9
+
+jshell> String domain(String url) {
+   ...>     //"substring a partir de https:// que es en la posicion 8"
+   ...>     String urlTruncate = url.substring(8);
+   ...>     
+   ...>     int index = urlTruncate.indexOf("/");
+   ...>
+   ...>     return urlTruncate.substring(index + 1);
+   ...> }
+|  created method domain(String)
+
+jshell> domain("https://www.java.com/en/")
+$45 ==> "en/"
+
+jshell> String domain(String url) {
+   ...>     //"substring a partir de https:// que es en la posicion 8"
+   ...>     String urlTruncate = url.substring(8);
+   ...>
+   ...>     int index = urlTruncate.indexOf("/");
+   ...>
+   ...>     return urlTruncate.substring(0, index + 1);
+   ...> }
+|  modified method domain(String)
+
+jshell> domain("https://www.java.com/en/")
+$47 ==> "www.java.com/"
+
+jshell> String domain(String url) {
+   ...>     //"substring a partir de https:// que es en la posicion 8"
+   ...>     String urlTruncate = url.substring(8);
+   ...>     
+   ...>     int index = urlTruncate.indexOf("/");
+   ...>
+   ...>     return urlTruncate.substring(0, index);
+   ...> }
+|  modified method domain(String)
+
+jshell> domain("https://www.java.com/en/")
+$49 ==> "www.java.com"
+
+jshell> domain("https://jcp.org")
+|  Exception java.lang.StringIndexOutOfBoundsException: Range [0, -1) out of bounds for length 7
+|        at Preconditions$1.apply (Preconditions.java:55)
+|        at Preconditions$1.apply (Preconditions.java:52)
+|        at Preconditions$4.apply (Preconditions.java:213)
+|        at Preconditions$4.apply (Preconditions.java:210)
+|        at Preconditions.outOfBounds (Preconditions.java:98)
+|        at Preconditions.outOfBoundsCheckFromToIndex (Preconditions.java:112)
+|        at Preconditions.checkFromToIndex (Preconditions.java:349)
+|        at String.checkBoundsBeginEnd (String.java:4865)
+|        at String.substring (String.java:2834)
+|        at domain (#48:7)
+|        at (#50:1)
+
+jshell> String domain(String url) {
+   ...>     //"substring a partir de https:// que es en la posicion 8"
+   ...>     String urlTruncate = url.substring(8);
+   ...>
+   ...>     int index = urlTruncate.indexOf("/");
+   ...>
+   ...>     if (index == -1) {
+   ...>         return urlTruncate;
+   ...>     } else {
+   ...>         return urlTruncate.substring(0, index);
+   ...>     }
+   ...> }
+   ...> 
+|  modified method domain(String)
+
+jshell> domain("https://jcp.org")
+$52 ==> "jcp.org"
+
+jshell> domain("https://www.java.com/en/")
+$53 ==> "www.java.com"
+
+jshell> //E4.10
+
+
+invit@DESKTOP-EHN4TKO MINGW64 ~
+$ jshell
+|  Welcome to JShell -- Version 21.0.7
+|  For an introduction type: /help intro
+>....                                                                                                                                                                                  ...>     var a = anio % 19;
+   ...>     var b = anio / 100;
+   ...>     var c = anio % 100;
+   ...>     var d = b / 4;
+   ...>     var e = b % 4;
+   ...>     var g = ((8 * b) + 13) / 25;
+   ...>     var h = ((19 * a) + b - d - g + 15) % 30;
+   ...>     var i = c / 4;
+   ...>     var k = c % 4;
+   ...>     var l = (32 + (2 * e) + (2 * i) - h - k) % 7;
+   ...>     var m = (a + (11 * h) + (19 * l)) / 433;
+   ...>     var n = (h + l - (7 * m) + 90) / 25;
+   ...>     var p = (h + l - (7 * m) + (33 * n) + 19) % 32;
+   ...>     return anio;
+   ...> }                                                                                                                                                                           
+|  Error:
+|  incompatible types: int cannot be converted to java.lang.String
+|      return anio;
+|             ^--^
+>....                                                                                                                                                                                  ...>     var a = anio % 19;
+   ...>     var b = anio / 100;
+   ...>     var c = anio % 100;
+   ...>     var d = b / 4;
+   ...>     var e = b % 4;
+   ...>     var g = ((8 * b) + 13) / 25;
+   ...>     var h = ((19 * a) + b - d - g + 15) % 30;
+   ...>     var i = c / 4;
+   ...>     var k = c % 4;
+   ...>     var l = (32 + (2 * e) + (2 * i) - h - k) % 7;
+   ...>     var m = (a + (11 * h) + (19 * l)) / 433;
+   ...>     var n = (h + l - (7 * m) + 90) / 25;
+   ...>     var p = (h + l - (7 * m) + (33 * n) + 19) % 32;
+   ...>     return "" + anio;
+   ...> }
+|  created method domingoDePascua(int)
+
+jshell> domingoDePascua(2024)
+$2 ==> "2024"
+>....                                                                                                                                                                                  ...>     var a = anio % 19;
+   ...>     var b = anio / 100;
+   ...>     var c = anio % 100;
+   ...>     var d = b / 4;
+   ...>     var e = b % 4;
+   ...>     var g = ((8 * b) + 13) / 25;
+   ...>     var h = ((19 * a) + b - d - g + 15) % 30;
+   ...>     var i = c / 4;
+   ...>     var k = c % 4;
+   ...>     var l = (32 + (2 * e) + (2 * i) - h - k) % 7;
+   ...>     var m = (a + (11 * h) + (19 * l)) / 433;
+   ...>     var n = (h + l - (7 * m) + 90) / 25;
+   ...>     var p = (h + l - (7 * m) + (33 * n) + 19) % 32;
+   ...>     return "" + anio + "/" + n ;
+   ...> }
+|  modified method domingoDePascua(int)
+jshell> domingoDePascua(2024)
+$4 ==> "2024/3"
+>....                                                                                                                                                                                  ...>     var a = anio % 19;
+   ...>     var b = anio / 100;
+   ...>     var c = anio % 100;
+   ...>     var d = b / 4;
+   ...>     var e = b % 4;
+   ...>     var g = ((8 * b) + 13) / 25;
+   ...>     var h = ((19 * a) + b - d - g + 15) % 30;
+   ...>     var i = c / 4;
+   ...>     var k = c % 4;
+   ...>     var l = (32 + (2 * e) + (2 * i) - h - k) % 7;
+   ...>     var m = (a + (11 * h) + (19 * l)) / 433;
+   ...>     var n = (h + l - (7 * m) + 90) / 25;                                                                                                                                    
+   ...>     var p = (h + l - (7 * m) + (33 * n) + 19) % 32;
+   ...>     return "" + anio + "/" + n ;
+   ...> }
+|  modified method domingoDePascua(int)
+>....                                                                                                                                                                                  ...>     var g = ((8 * b) + 13) / 25;
+   ...>     var h = ((19 * a) + b - d - g + 15) % 30;
+   ...>     var i = c / 4;
+   ...>     var k = c % 4;
+   ...>     var l = (32 + (2 * e) + (2 * i) - h - k) % 7;
+   ...>     var m = (a + (11 * h) + (19 * l)) / 433;
+   ...>     var n = (h + l - (7 * m) + 90) / 25;
+   ...>     var p = (h + l - (7 * m) + (33 * n) + 19) % 32;
+   ...>
+   ...>     var mes = String.format("%02d", n);
+   ...>
+   ...>     var dia = String.format("%02d", p);
+   ...>
+   ...>     return "" + anio + "/" + mes + "/"+ dia;
+   ...> }                                                                                                                                                                           
+|  modified method domingoDePascua(int)
+
+jshell> domingoDePascua(2024)
+$7 ==> "2024/03/31"
+
+jshell> domingoDePascua(2025)
+$8 ==> "2025/04/20"
+
+jshell> domingoDePascua(1961)
+$9 ==> "1961/04/02"
+
+jshell>
+
+
+invit@DESKTOP-EHN4TKO MINGW64 ~
+$ jshell
+|  Welcome to JShell -- Version 21.0.7
+|  For an introduction type: /help intro
+>....                                                                                                                                                                                  ...>     var a = anio % 19;
+   ...>     var b = anio / 100;
+   ...>     var c = anio % 100;
+   ...>     var d = b / 4;
+   ...>     var e = b % 4;
+   ...>     var g = ((8 * b) + 13) / 25;
+   ...>     var h = ((19 * a) + b - d - g + 15) % 30;
+   ...>     var i = c / 4;
+   ...>     var k = c % 4;
+   ...>     var l = (32 + (2 * e) + (2 * i) - h - k) % 7;
+   ...>     var m = (a + (11 * h) + (19 * l)) / 433;
+   ...>     var n = (h + l - (7 * m) + 90) / 25;
+   ...>     var p = (h + l - (7 * m) + (33 * n) + 19) % 32;
+   ...>     return anio;
+   ...> }                                                                                                                                                                           
+|  Error:
+|  incompatible types: int cannot be converted to java.lang.String
+|      return anio;
+|             ^--^
+>....                                                                                                                                                                                  ...>     var a = anio % 19;
+   ...>     var b = anio / 100;
+   ...>     var c = anio % 100;
+   ...>     var d = b / 4;
+   ...>     var e = b % 4;
+   ...>     var g = ((8 * b) + 13) / 25;
+   ...>     var h = ((19 * a) + b - d - g + 15) % 30;
+   ...>     var i = c / 4;
+   ...>     var k = c % 4;
+   ...>     var l = (32 + (2 * e) + (2 * i) - h - k) % 7;
+   ...>     var m = (a + (11 * h) + (19 * l)) / 433;
+   ...>     var n = (h + l - (7 * m) + 90) / 25;
+   ...>     var p = (h + l - (7 * m) + (33 * n) + 19) % 32;
+   ...>     return "" + anio;
+   ...> }
+|  created method domingoDePascua(int)
+
+jshell> domingoDePascua(2024)
+$2 ==> "2024"
+>....                                                                                                                                                                                  ...>     var a = anio % 19;
+   ...>     var b = anio / 100;
+   ...>     var c = anio % 100;
+   ...>     var d = b / 4;
+   ...>     var e = b % 4;
+   ...>     var g = ((8 * b) + 13) / 25;
+   ...>     var h = ((19 * a) + b - d - g + 15) % 30;
+   ...>     var i = c / 4;
+   ...>     var k = c % 4;
+   ...>     var l = (32 + (2 * e) + (2 * i) - h - k) % 7;
+   ...>     var m = (a + (11 * h) + (19 * l)) / 433;
+   ...>     var n = (h + l - (7 * m) + 90) / 25;
+   ...>     var p = (h + l - (7 * m) + (33 * n) + 19) % 32;
+   ...>     return "" + anio + "/" + n ;
+   ...> }
+|  modified method domingoDePascua(int)
+jshell> domingoDePascua(2024)
+$4 ==> "2024/3"
+>....                                                                                                                                                                                  ...>     var a = anio % 19;
+   ...>     var b = anio / 100;
+   ...>     var c = anio % 100;
+   ...>     var d = b / 4;
+   ...>     var e = b % 4;
+   ...>     var g = ((8 * b) + 13) / 25;
+   ...>     var h = ((19 * a) + b - d - g + 15) % 30;
+   ...>     var i = c / 4;
+   ...>     var k = c % 4;
+   ...>     var l = (32 + (2 * e) + (2 * i) - h - k) % 7;
+   ...>     var m = (a + (11 * h) + (19 * l)) / 433;
+   ...>     var n = (h + l - (7 * m) + 90) / 25;                                                                                                                                    
+   ...>     var p = (h + l - (7 * m) + (33 * n) + 19) % 32;
+   ...>     return "" + anio + "/" + n ;
+   ...> }
+|  modified method domingoDePascua(int)
+>....                                                                                                                                                                                  ...>     var g = ((8 * b) + 13) / 25;
+   ...>     var h = ((19 * a) + b - d - g + 15) % 30;
+   ...>     var i = c / 4;
+   ...>     var k = c % 4;
+   ...>     var l = (32 + (2 * e) + (2 * i) - h - k) % 7;
+   ...>     var m = (a + (11 * h) + (19 * l)) / 433;
+   ...>     var n = (h + l - (7 * m) + 90) / 25;
+   ...>     var p = (h + l - (7 * m) + (33 * n) + 19) % 32;
+   ...>
+   ...>     var mes = String.format("%02d", n);
+   ...>
+   ...>     var dia = String.format("%02d", p);
+   ...>
+   ...>     return "" + anio + "/" + mes + "/"+ dia;
+   ...> }                                                                                                                                                                           
+|  modified method domingoDePascua(int)
+
+jshell> domingoDePascua(2024)
+$7 ==> "2024/03/31"
+
+jshell> domingoDePascua(2025)
+$8 ==> "2025/04/20"
+
+jshell> domingoDePascua(1961)
+$9 ==> "1961/04/02"
+
+jshell> String hexString(int r, int g, int b) {
+   ...>     r = Math.max(0, Math.min(255, r));
+   ...>     g = Math.max(0, Math.min(255, g));
+   ...>     b = Math.max(0, Math.min(255, b));
+   ...>
+   ...>     return String.format("#%02X%02X%02X", r, g, b);
+   ...> }
+|  created method hexString(int,int,int)
+
+jshell> hexString(0, 0, 0)
+$11 ==> "#000000"
+
+jshell> String hexString(int r, int g, int b) {
+   ...>     r = Math.max(0, Math.min(255, r));
+   ...>     g = Math.max(0, Math.min(255, g));
+   ...>     b = Math.max(0, Math.min(255, b));
+   ...>
+   ...>     return String.format("%02X%02X%02X", r, g, b);
+   ...> }
+|  modified method hexString(int,int,int)
+
+jshell> hexString(0, 0, 0)
+$13 ==> "000000"
+
+jshell> hexString(255, 255, 255)
+$14 ==> "FFFFFF"
+
+jshell> hexString(12, 15, 77)
+$15 ==> "0C0F4D"
+
+jshell>
+
+
+
+
+
+
